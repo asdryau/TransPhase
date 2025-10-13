@@ -12,7 +12,7 @@ TransPhase is a deep learning framework for generating smooth transition phases 
 
 This project implements a multi-stage approach to human motion generation:
 
-1. **PAE (Parametric AutoEncoder)**: Encodes motion sequences into a compact latent representation using sinusoidal parameterization
+1. **PAE (Periodic AutoEncoder)**: Encodes motion sequences into a compact latent representation using sinusoidal parameterization
 2. **SPDM (Sequential Phase Diffusion Model)**: Generates motion phases in sequence
 3. **TPDM (Transition Phase Diffusion Model)**: Generates smooth transitions between motion segments
 
@@ -22,7 +22,7 @@ The framework uses the BABEL-Teach dataset and leverages CLIP embeddings for tex
 
 ### Key Components
 
-- **MotionPAE**: A transformer-based autoencoder that learns compact motion representations using parametric sine wave functions
+- **MotionPAE**: A transformer-based autoencoder that learns compact motion representations
 - **DiffPhase**: Sequential diffusion model for generating left and right motion phases
 - **TranPhase**: Cross-attention based diffusion model for generating transition phases between motion segments
 
@@ -121,7 +121,7 @@ The dataset contains motion sequences with:
 
 ### Training
 
-#### 1. Train the Parametric AutoEncoder (PAE)
+#### 1. Train the Periodic AutoEncoder (PAE)
 
 ```bash
 cd TransPhase
@@ -177,7 +177,7 @@ TransPhase/
 ├── model/
 │   ├── datamodule_babelteach_rel.py    # Data loading and preprocessing
 │   ├── PAE/
-│   │   ├── model.py                     # Parametric AutoEncoder
+│   │   ├── model.py                     # Periodic AutoEncoder
 │   │   └── train.py                     # PAE training script
 │   ├── SPDM/
 │   │   ├── diffusion.py                 # Sequential Phase Diffusion Model  
