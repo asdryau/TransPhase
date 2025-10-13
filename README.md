@@ -1,8 +1,10 @@
-# TransPhase: Transition Phase Motion Generation with Diffusion Models
+# TransPhase
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9.13](https://img.shields.io/badge/python-3.9.13-blue.svg)](https://www.python.org/downloads/release/python-3913/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
+
+A repository of paper [Deep Compositional Phase Diffusion for Long Motion Sequence Generation](https://github.com/asdryau/TransPhase/#) in NeurIPS 2025.
 
 TransPhase is a deep learning framework for generating smooth transition phases in human motion sequences using diffusion models and Periodic AutoEncoders (PAE). The system focuses on generating coherent motion transitions between different motion segments, particularly useful for character animation, robotics, and motion synthesis applications.
 
