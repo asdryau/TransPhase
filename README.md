@@ -4,7 +4,7 @@
 [![Python 3.9.13](https://img.shields.io/badge/python-3.9.13-blue.svg)](https://www.python.org/downloads/release/python-3913/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 
-TransPhase is a deep learning framework for generating smooth transition phases in human motion sequences using diffusion models and Parametric AutoEncoders (PAE). The system focuses on generating coherent motion transitions between different motion segments, particularly useful for character animation, robotics, and motion synthesis applications.
+TransPhase is a deep learning framework for generating smooth transition phases in human motion sequences using diffusion models and Periodic AutoEncoders (PAE). The system focuses on generating coherent motion transitions between different motion segments, particularly useful for character animation, robotics, and motion synthesis applications.
 
 <!-- ## 🎯 Overview
 
