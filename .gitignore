@@ -1,8 +1,3 @@
-*.pyc
-*.npz
-*.npy
-*.pkl
-*.json
-
-global_info/*
-data/*
+.vscode/
+.git/
+node_modules/
