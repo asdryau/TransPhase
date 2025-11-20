@@ -1,60 +1,49 @@
-# TransPhase
+# Deep Compositional Phase Diffusion for Long Motion Sequence Generation (NeurIPS 2025)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9.13](https://img.shields.io/badge/python-3.9.13-blue.svg)](https://www.python.org/downloads/release/python-3913/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-<2510.14427>-<COLOR>.svg)](https://arxiv.org/abs/2510.14427)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue)](https://github.com/asdryau/TransPhase/blob/gh-pages/index.html)
 
-A repository of paper [Deep Compositional Phase Diffusion for Long Motion Sequence Generation](https://github.com/asdryau/TransPhase/#) in NeurIPS 2025.
+<!--Supp: https://drive.google.com/file/d/1SNcRA188Or7ZRD_99S-7Dp_Yqn_vQXAO/view?usp=sharing -->
 
-TransPhase is a deep learning framework for generating smooth transition phases in human motion sequences using diffusion models and Periodic AutoEncoders (PAE). The system focuses on generating coherent motion transitions between different motion segments, particularly useful for character animation, robotics, and motion synthesis applications.
+![teaser](https://asdryau.github.io/TransPhase/static/images/Figure1.jpg)
 
-<!-- ## 🎯 Overview
+## 🎯 Abstract
+<b>TL;DR</b>
+> The proposed Compositional Phase Diffusion framework consistently generates semantically aligned multi-clip motion with smooth transitions by using latent-phase diffusion modules (SPDM and TPDM) to preserve phase continuity and enable inbetweening.
 
-This project implements a multi-stage approach to human motion generation:
+<details><summary><b>CLICK for full abstract</b></summary>
 
-1. **PAE (Periodic AutoEncoder)**: Encodes motion sequences into a compact latent representation using sinusoidal parameterization
-2. **SPDM (Sequential Phase Diffusion Model)**: Generates motion phases in sequence
-3. **TPDM (Transition Phase Diffusion Model)**: Generates smooth transitions between motion segments
+> Recent research on motion generation has shown significant progress in generating semantically aligned motion with singular semantics. However, when employing these models to create composite sequences containing multiple semantically generated motion clips, they often struggle to preserve the continuity of motion dynamics at the transition boundaries between clips, resulting in awkward transitions and abrupt artifacts. To address these challenges, we present Compositional Phase Diffusion, which leverages the Semantic Phase Diffusion Module (SPDM) and Transitional Phase Diffusion Module (TPDM) to progressively incorporate semantic guidance and phase details from adjacent motion clips into the diffusion process. Specifically, SPDM and TPDM operate within the latent motion frequency domain established by the pre-trained Action-Centric Motion Phase Autoencoder (ACT-PAE). This allows them to learn semantically important and transition-aware phase information from variable-length motion clips during training. Experimental results demonstrate the competitive performance of our proposed framework in generating compositional motion sequences that align semantically with the input conditions, while preserving phase transitional continuity between preceding and succeeding motion clips. Additionally, motion inbetweening task is made possible by keeping the phase parameter of the input motion sequences fixed throughout the diffusion process, showcasing the potential for extending the proposed framework to accommodate various application scenarios.
+</details>
 
-The framework uses the BABEL-Teach dataset and leverages CLIP embeddings for text-conditioned motion generation.
+## 📚 Citation
 
-## 🏗️ Architecture
+If you find this work helpful in your research, please consider leaving a star ⭐️ and citing:
 
-### Key Components
-
-- **MotionPAE**: A transformer-based autoencoder that learns compact motion representations
-- **DiffPhase**: Sequential diffusion model for generating left and right motion phases
-- **TranPhase**: Cross-attention based diffusion model for generating transition phases between motion segments
-
-### Technical Features
-
-- **3-way Positional Encoding**: Custom positional encoding for handling variable-length motion sequences
-- **GMD Projection**: Guided Motion Diffusion projection for emphasis on important motion features
-- **CLIP Integration**: Text-conditional motion generation using CLIP embeddings
-- **Classifier-free Guidance**: Improved generation quality through conditional training -->
-
-## 📋 Requirements
-
-### Dependencies
-
-```txt
-pytorch-lightning==1.9.0
-smplx==0.1.28
-scipy==1.10.1
-numpy==1.23.1
-chumpy==0.70
-git+https://github.com/openai/CLIP.git
-tensorboard==2.10.0
-diffusers==0.34.0
+```bibtex
+@inproceedings{au2025transphase,
+  title={Deep Compositional Phase Diffusion for Long Motion Sequence Generation},
+  author={Au, Ho Yin and Chen, Jie and Jiang, Junkun and Xiang, Jingyu},
+  year={2025},
+  booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems}
+}
 ```
 
-### Hardware Requirements
+## 📋 TODO
 
-- CUDA-capable GPU (recommended: RTX 3080 or better)
-- At least 16GB RAM
-- 50GB+ free disk space for datasets and checkpoints
+- ✅ Released model and dataloader code
+- ✅ Released model checkpoints and demo script
+- ✅ Released processed data along with training and testing instructions
+- ✅ Released code for generating evaluation motion samples
+- 🔄 Provide detailed instructions and setup for running data processing and evaluation scripts in the external repository
 
-## 🚀 Installation
+
+## 🔮 Environment Setup
+
+### Environment Setup
 
 1. **Clone the repository**
 
@@ -74,203 +63,97 @@ diffusers==0.34.0
 
    ```bash
    conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
-   (when conda takes too long, try pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116)
    pip install -r requirements.txt
    ```
 
-<!-- 4. **Download SMPL models**
-   - Download SMPL models from [SMPL website](https://smpl.is.tue.mpg.de/)
-   - Place `SMPL_FEMALE.pkl` in the `utils/` directory -->
+<!-- ## 📊 Data and Model Preparation -->
 
-## 📊 Dataset and Other Dependencies Setup
-
-### Dataset and SMPL Model
+### Dataset and Pretrained Model
 
 1. **Download**
 
-   - Download `model_weights.zip` and `processed_data.zip` from [HERE](https://drive.google.com/drive/folders/16kPBUzQu-xsPHI7Jfkn2DWwsB9F8bnKH?usp=drive_link)
+   - Download `model_weights.zip` and `processed_data.zip` from [HERE](https://drive.google.com/drive/folders/17SFCS2li0zFHhBDDItKDyjd4ldYyuCjF?usp=drive_link)
 
-2. **Data Structure**
+2. **Repository Setup**
 
-   ```txt
-   model_weights/
-   └── TransPhase/
-       ├── model/*
-       └── utils/*
+   - Extract both ZIP files and copy the contents into the `TransPhase/` directory of the current repository.
+
+3. **Final File Structure**
+
+   ```bash
+   TransPhase
+   ├── data
+   │   ├──  label_clip_emb_BABELteach.npz
+   │   ├──  meta_motion_CLIP_BABELteach_rel_train.json
+   │   └──  motion_CLIP_BABELteach_rel_train.pkl
+   ├── evaluation
+   │   ├──  evaluation_data.csv
+   │   └──  evaluation_data.pkl
+   ├── model
+   │   ├──  PAE/lightning_logs/version_0/checkpoints/last.ckpt
+   │   ├──  SPDM/lightning_logs/version_0/checkpoints/last.ckpt
+   │   ├──  TPDM/lightning_logs/version_0/checkpoints/last.ckpt
+   │   ├──  inv_rand_proj_15.npy
+   │   └──  rand_proj_15.npy
+   └── utils
+       └──  SMPL_FEMALE.pkl
    ```
 
-    ```txt
-   processed_data/
-   └── TransPhase/
-       ├── data/*
-       └── evaluation/*
-   ```
 
-3. **Usage**
+## 🚀 Motion Synthesis
+1. **Long-term Motion Generation**
+```bash
+python demo_t2m_long.py
+```
 
-   - Copy the files under `TransPhase/` from both ZIPs and paste them to your project root path.
-<!-- ### Data Format
+2. **Motion Inbetweening**
+```bash
+python demo_mib.py
+```
 
-The dataset contains motion sequences with:
+The input text and duration specifications can be modified directly within the demo script.
 
-- **Motion data**: SMPL pose parameters and translations  
-- **Text annotations**: Natural language descriptions of actions
-- **Temporal segments**: Left motion, transition, and right motion phases -->
 
-## 🎮 Run
+## 🔧 Training
 
-### Training
-
-#### 1. Train the Periodic AutoEncoder (PAE)
+### 1. Train ACT-PAE
 
 ```bash
-cd TransPhase
 python -m model.PAE.train
 ```
 
-#### 2. Train Sequential Phase Diffusion Model (SPDM)
+### 2. Train SPDM and TPDM
 
 ```bash
-cd TransPhase 
 python -m model.SPDM.train
-```
-
-#### 3. Train Transition Phase Diffusion Model (TPDM)
-
-```bash
-cd TransPhase
 python -m model.TPDM.train
 ```
 
-<!-- ### Configuration
+**Note:** For details on processing the BABEL-TEACH dataset, please refer to the [PriorMDM data processing script](https://github.com/priorMDM/priorMDM/blob/main/data_loaders/amass/babel.py) and the code snippets in `misc/babel.py` and `model/datamodule_babelteach_rel.py` within this repository for more information.
 
-Key training parameters can be modified in the training scripts:
-
-```python
-# Training configuration
-batch_size = 2                    # Batch size for training
-latent_dim = 512                  # Latent dimension for motion encoding
-max_epochs = 300000               # Maximum training epochs
-num_train_timesteps = 1000        # Diffusion timesteps
-guidance_scale = 7.5              # Classifier-free guidance scale
-``` -->
-
-### Inference
-
-```python
-# Load trained models
-from model.PAE.model import MotionPAE
-from model.TPDM.diffusion import TranPhase
-
-# Initialize models
-pae = MotionPAE.load_from_checkpoint("path/to/pae/checkpoint.ckpt")
-transphase = TranPhase.load_from_checkpoint("path/to/transphase/checkpoint.ckpt")
-
-# Generate motion transitions
-# (Implementation details depend on specific use case)
+## 📈 Evaluation
+To generate the evaluation output for our model, execute the following commands:
+```bash
+python -m evaluation.test_mib
+python -m evaluation.test_t2m_pair
+python -m evaluation.test_t2m_long
 ```
 
-## 📁 Project Structure
-
-```txt
-TransPhase/
-├── model/
-│   ├── datamodule_babelteach_rel.py    # Data loading and preprocessing
-│   ├── PAE/
-│   │   ├── model.py                     # Periodic AutoEncoder
-│   │   └── train.py                     # PAE training script
-│   ├── SPDM/
-│   │   ├── diffusion.py                 # Sequential Phase Diffusion Model  
-│   │   └── train.py                     # SPDM training script
-│   └── TPDM/
-│       ├── diffusion.py                 # Transition Phase Diffusion Model
-│       └── train.py                     # TPDM training script
-├── utils/
-│   ├── algo.py                          # Motion processing algorithms
-│   └── rotation_conversion.py           # Rotation utilities (from PyTorch3D)
-├── LICENSE                              # MIT License
-└── README.md                            # This file
+To run the evaluation for the motion inbetweening task, execute the following commands:
+```bash
+python -m evaluation.qe_mib
 ```
 
-<!-- ## 🔧 Key Features
+**Note:** For details on evaluating on the BABEL-TEACH dataset, please refer to the [PriorMDM evaluation script](https://github.com/priorMDM/priorMDM/blob/main/eval/eval_babel.py#L324) and [PriorMDM evaluation dataloader](https://github.com/priorMDM/priorMDM/blob/main/data_loaders/humanml/motion_loaders/model_motion_loaders.py#L76) for more information.
 
-### Motion Representation
 
-- **SMPL-based**: Uses SMPL body model for realistic human motion
-- **6D Rotation**: Robust rotation representation using 6D rotation matrices  
-- **Velocity Features**: Incorporates motion velocities and foot contacts
-- **Root-relative**: Motion represented relative to pelvis root joint
+## 🙏 Acknowledgments
 
-### Diffusion Models
-
-- **DDIM/DDPM Schedulers**: Flexible noise scheduling for training and inference
-- **Multi-scale Architecture**: Transformer-based denoisers with attention mechanisms
-- **Conditional Generation**: Text-guided motion generation using CLIP embeddings
-
-### Training Techniques
-
-- **Progressive Training**: Multi-stage training from autoencoder to diffusion models
-- **Mixed Precision**: FP16 training for efficiency
-- **Multi-GPU Support**: Distributed training across multiple GPUs
-
-## 📈 Performance
-
-The model is designed to generate high-quality motion transitions with:
-
-- **Temporal Coherence**: Smooth transitions between motion phases
-- **Semantic Consistency**: Motion matches text descriptions
-- **Physical Plausibility**: Realistic human motion dynamics -->
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- **[SMPL/SMPL-X](https://smpl.is.tue.mpg.de/)**: For human body modeling (SMPL_Female.pkl) 
+- **[PyTorch3D](https://github.com/facebookresearch/pytorch3d/blob/v0.3.0/pytorch3d/transforms/rotation_conversions.py)**: For rotation conversion utilities
+- **[BABEL-TEACH Dataset](https://github.com/atnikos/teach)**: For motion-text paired data
+- **[PriorMDM](https://github.com/priorMDM/priorMDM)**: For data processing and text-motion evaluation
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **SMPL/SMPL-X**: For human body modeling
-- **CLIP**: For text-motion alignment  
-- **PyTorch3D**: For rotation conversion utilities
-- **BABEL Dataset**: For motion-text paired data
-- **Diffusers**: For diffusion model implementations
-- **PyTorch Lightning**: For training framework
-
-## 📚 References
-
-If you use this work in your research, please consider citing:
-
-```bibtex
-@misc{transphase2025,
-  title={TransPhase: Transition Phase Motion Generation with Diffusion Models},
-  author={Ryan Au},
-  year={2025},
-  url={https://github.com/asdryau/TransPhase}
-}
-```
-
-## 🐛 Issues & Support
-
-If you encounter any issues or have questions:
-
-1. Check existing [Issues](https://github.com/asdryau/TransPhase/issues)
-2. Create a new issue with detailed description
-3. Include system information and error logs
-
-<!-- ## 🔮 Future Work
-
-- [ ] Real-time motion generation optimization
-- [ ] Multi-character interaction modeling  
-- [ ] Extended motion style control
-- [ ] Integration with physics simulation
-- [ ] Mobile/edge device deployment -->

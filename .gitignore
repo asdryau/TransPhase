@@ -1,8 +1,4 @@
 *.pyc
-*.npz
 *.npy
 *.pkl
 *.json
-
-global_info/*
-data/*
