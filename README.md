@@ -4,7 +4,7 @@
 [![Python 3.9.13](https://img.shields.io/badge/python-3.9.13-blue.svg)](https://www.python.org/downloads/release/python-3913/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![arXiv](https://img.shields.io/badge/arXiv-<2510.14427>-<COLOR>.svg)](https://arxiv.org/abs/2510.14427)
-[![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue)](https://github.com/asdryau/TransPhase/blob/gh-pages/index.html)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue)](https://asdryau.github.io/TransPhase/)
 
 <!--Supp: https://drive.google.com/file/d/1SNcRA188Or7ZRD_99S-7Dp_Yqn_vQXAO/view?usp=sharing -->
 
