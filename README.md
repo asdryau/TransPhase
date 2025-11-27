@@ -101,6 +101,7 @@ If you find this work helpful in your research, please consider leaving a star �
 
 
 ## 🚀 Motion Synthesis
+The input text and duration specifications can be modified directly within the demo script.
 1. **Long-term Motion Generation**
 ```bash
 python demo_t2m_long.py
@@ -111,8 +112,12 @@ python demo_t2m_long.py
 python demo_mib.py
 ```
 
-The input text and duration specifications can be modified directly within the demo script.
+## 🖥️ Visualization
+We use the SMPL-X Blender add-on to visualize the generated `.npz` file.
 
+Please register at [(https://smpl-x.is.tue.mpg.de)](https://smpl-x.is.tue.mpg.de), download the SMPL-X for Blender add-on, and follow the provided installation instructions.
+
+Once installed, select **Animation -> Add Animation** within the SMPL-X sidebar tool, and navigate to the generated `.npz` file for visualization.
 
 ## 🔧 Training
 
