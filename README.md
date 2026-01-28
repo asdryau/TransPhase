@@ -1,10 +1,10 @@
-# Deep Compositional Phase Diffusion for Long Motion Sequence Generation (NeurIPS 2025)
+# Deep Compositional Phase Diffusion for Long Motion Sequence Generation (NeurIPS 2025 Oral)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9.13](https://img.shields.io/badge/python-3.9.13-blue.svg)](https://www.python.org/downloads/release/python-3913/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![arXiv](https://img.shields.io/badge/arXiv-<2510.14427>-<COLOR>.svg)](https://arxiv.org/abs/2510.14427)
-[![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue)](https://asdryau.github.io/TransPhase/)
+[![Supplementary](https://img.shields.io/badge/Supplementary%20Material-grey?style=flat&logo=Files&logoColor=white)](https://drive.google.com/file/d/1SNcRA188Or7ZRD_99S-7Dp_Yqn_vQXAO/view?usp=sharing)
 
 <!--Supp: https://drive.google.com/file/d/1SNcRA188Or7ZRD_99S-7Dp_Yqn_vQXAO/view?usp=sharing -->
 
@@ -31,6 +31,10 @@ If you find this work helpful in your research, please consider leaving a star â
   booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems}
 }
 ```
+
+Please checkout our follow-up works if interested:
+
+[SOSControl](https://github.com/asdryau/SOSControl/) - saliency-aware and precise control of body part orientation and motion timing in text-to-motion generation.
 
 ## ðŸ“‹ TODO
 
